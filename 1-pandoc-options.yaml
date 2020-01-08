@@ -1,0 +1,5 @@
+template: basic-template.latex
+top-level-division: chapter
+
+filters:
+  - c:\tools\ruby27\bin\pandoc_abnt.bat

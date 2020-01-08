@@ -1,0 +1,1 @@
+pandoc 1-writing-in-markdown.md -o 1-writing-in-markdown.pdf --defaults=1-pandoc-options.yaml

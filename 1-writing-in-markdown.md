@@ -36,8 +36,9 @@ toc: false
 
 \lipsum[1-4]
 
-![Pirâmide etária](plot-1.png)
+![Pirâmide etária](plot-1.png){#id}
 
+Fonte: elaboração própria
 
 
 # Outro capítulo
