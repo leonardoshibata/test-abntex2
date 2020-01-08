@@ -1,0 +1,110 @@
+%%
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para Relatórios Técnicos
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Leonardo Shibata, https://github.com/leonardoshibata/
+%%
+%% Further information about abnTeX2 are available on https://github.com/abntex/abntex2
+%%
+
+% ---
+% INICIO DAS CUSTOMIZACOES PARA RELATÓRIOS TÉCNICOS
+% ---
+
+\ProvidesPackage{abnt-relatorio-tecnico}[2019/12/30 Criacao desta customizacao do abnTeX2]
+
+% alterando a capa
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \center
+
+    % Recomenda-se incluir: (não necessariamente nesta ordem)
+    %nome e endereço da instituição responsável;
+    \ABNTEXchapterfont\Large\imprimirinstituicao
+    
+    \vfill
+
+    % número do relatório;
+    % ISSN (se houver)
+    
+    % título e subtítulo (se houver);
+    \begin{center}
+      \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+    \end{center}
+    
+    \vfill
+
+    % classificação de segurança (se houver).
+    
+    \vspace*{1cm}
+  \end{capa}
+}
+
+
+% folha de rosto 
+% ABNT NBR 10719
+
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+  \begin{center}
+
+    % a) nome do órgão ou entidade responsável que solicitou ou gerou o relatório;
+    {\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
+  
+    \vspace*{\fill}
+    % \vspace*{\fill}
+    
+    % Todos os itens abaixo podem ser incluídos na função do título.
+    % b) título do projeto, programa ou plano que o relatório está relacionado;
+    % c) título do relatório;
+    % d) subtítulo, se houver, deve ser precedido de dois pontos, evidenciando a sua subordinação ao título. O relatório em vários volumes deve ter um título geral. Além deste, cada volume pode ter um título específico;
+    % e) número do volume, se houver mais de um, deve constar em cada folha de rosto a especificação do respectivo volume, em algarismo arábico;
+    \begin{center}
+      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+    \end{center}
+    
+    \vspace*{\fill}
+
+    
+    % Os itens abaixo podem ser incluídos no preâmbulo.
+    % f) código de identificação, se houver, recomenda-se que seja formado pela sigla da instituição, indicação da categoria do relatório, data, indicação do assunto e número sequencial do relatório na série;
+    % g) classificação de segurança. Todos os órgãos, privados ou públicos, que desenvolvam pesquisa de interesse nacional de conteúdo sigiloso, devem informar a classificação adequada, conforme a legislação em vigor;
+    \abntex@ifnotempty{\imprimirpreambulo}{%
+      \hspace{.45\textwidth}
+      \begin{minipage}{.5\textwidth}
+      	\SingleSpacing
+         \imprimirpreambulo
+       \end{minipage}%
+       \vspace*{\fill}
+    }%
+
+
+    % h) nome do autor ou autor-entidade. O título e a qualificação ou a função do autor podem ser incluídos, pois servem para indicar sua autoridade no assunto. Caso a instituição que solicitou o relatório seja a mesma que o gerou, suprime-se o nome da instituição no campo de autoria;
+    {\ABNTEXchapterfont\large\imprimirautor}
+
+    \vspace*{\fill}
+
+    % i) local (cidade) da instituição responsável e/ou solicitante; NOTA No caso de cidades homônimas, recomenda-se o acréscimo da sigla da unidade da federação.
+    {\large\imprimirlocal}
+    \par
+    
+    % j) ano de publicação, de acordo com o calendário universal (gregoriano), deve ser apresentado em algarismos arábicos.
+    {\large\imprimirdata}
+    \vspace*{1cm}
+
+  \end{center}
+}
+\makeatother
+
+% ---
+% FIM DAS CUSTOMIZACOES PARA RELATÓRIOS TÉCNICOS
+% ---
