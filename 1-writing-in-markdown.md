@@ -1,4 +1,5 @@
 ---
+top-level-division: chapter
 documentclass: abntex2
 fontsize: 12pt
 classoption:
@@ -24,7 +25,7 @@ tipotrabalho: Relatório Técnico
 
 capa: true
 folhaderosto: true
-toc: true
+toc: false
 ---
 
 
