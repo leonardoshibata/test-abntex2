@@ -3,6 +3,8 @@
 
 \usepackage{graphicx}
 
+\usepackage{lipsum}  
+
 \usepackage{ifxetex}
   \ifxetex
     \usepackage{fontspec}
@@ -26,15 +28,27 @@
 %\imprimircapa
 \imprimirfolhaderosto
 
+\tableofcontents
+
 \textual
+
 \chapter{Introdução}
-Esta é a introdução
+\lipsum[1-4]
 
 \begin{figure}
   \caption{Pirâmide etária}
   \includegraphics{plot-1.png}
   \legend{Fonte: elaboração própria}
 \end{figure}
+
+
+
+\chapter{outro capítulo}
+\lipsum[5-6]
+
+\section{primeira secao}
+\lipsum[7-17]
+
 
 
 \end{document}
