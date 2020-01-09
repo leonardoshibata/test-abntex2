@@ -2,7 +2,7 @@
 output:
   pdf_document:
     template: basic-template.latex
-    keep_tex: true
+    #keep_tex: true
     pandoc_args: ["--top-level-division=chapter", "--filter=c:\\tools\\ruby27\\bin\\pandoc_abnt.bat"]
 
 documentclass: abntex2
@@ -17,20 +17,18 @@ header-includes: |
   \usepackage{lipsum}
   \usepackage{hyperref}
 
-title: Modelo de relatório técnico escrito direto no RStudio
+title: Modelo de relatório técnico no formato ABNT escrito no RStudio
 author: |
   Leonardo Goes Shibata
   \par
   Mestre em Saúde Pública
 date: 2020
-institution: Banco Interamericano de Desenvolvimento
-place: Sao Paulo
-preamble: BID-RT-2020-SAUDE-01, sigiloso
+institution: Veríssimo & Shibata Consultoria Ltda.
+place: São Paulo
+#preamble: 
 tipotrabalho: Relatório Técnico
 
 capa: true
-folhaderosto: true
-toc: false
 ---
 
 ```{r setup, include=FALSE}
