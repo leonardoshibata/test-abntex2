@@ -1,0 +1,56 @@
+---
+output:
+  pdf_document:
+    template: basic-template.latex
+    keep_tex: true
+    pandoc_args: ["--top-level-division=chapter", "--filter=c:\\tools\\ruby27\\bin\\pandoc_abnt.bat"]
+
+documentclass: abntex2
+fontsize: 12pt
+classoption:
+  - openright
+  - twosided
+papersize: a4paper
+
+header-includes: |
+  \usepackage{abntex2-relatorio-tecnico}
+  \usepackage{lipsum}
+  \usepackage{hyperref}
+
+title: Modelo de relatório técnico escrito direto no RStudio
+author: |
+  Leonardo Goes Shibata
+  \par
+  Mestre em Saúde Pública
+date: 2020
+institution: Banco Interamericano de Desenvolvimento
+place: Sao Paulo
+preamble: BID-RT-2020-SAUDE-01, sigiloso
+tipotrabalho: Relatório Técnico
+
+capa: true
+folhaderosto: true
+toc: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+# Introdução
+
+\lipsum[1-4]
+
+![Pirâmide etária](plot-1.png){#id}
+
+Fonte: elaboração própria
+
+
+# Outro capítulo
+
+\lipsum[5-6]
+
+## Primeira seção
+
+\lipsum[7-17]
