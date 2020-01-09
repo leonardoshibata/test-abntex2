@@ -8,7 +8,10 @@ Para resolver esse problema, outro desenvolvedor criou o programa em Ruby pandoc
 
 Utilizando o descrito acima, eu consegui criar um markdown que é convertido corretamente para o Latex.
 
+Posteriormente, criei também um arquivo R Markdown que obtém o mesmo resultado.
+
 
 # TODO
 
-Tentar criar o mesmo arquivo utilizando o RStudio
+Testar em um relatório real.
+
