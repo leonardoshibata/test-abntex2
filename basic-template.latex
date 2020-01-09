@@ -1,6 +1,16 @@
-\documentclass[12pt,openright,twoside,a4paper,brazil]{abntex2}
-\SingleSpacing
+$-- este é um comentário do template Pandoc.
+$-- o seu conteúdo não é incluído no arquivo .tex
+$-- as linhas que começam com % são comentários latex
+$-- e são incluídas no arquivo .tex
 
+% Definições de tamanho de fonte,
+% uso de verso e anverso,
+% conforme a ABNT NBR 10719:2015, seção 5.1
+\documentclass[12pt,openright,twoside,a4paper,brazil]{abntex2}
+
+\SingleSpacing  % espaçamento segundo a ABNT NBR 10719:2015, seção 5.1
+
+\usepackage{lmodern}  % fonte Latin Modern
 \usepackage{graphicx}
 \usepackage{ifxetex}
   \ifxetex
@@ -11,26 +21,48 @@
     \usepackage[T1]{fontenc}
   \fi
 
+\usepackage{hyperref} % controla a formação do índice
+  \makeatletter
+    \hypersetup{
+      pdftitle={\@title},
+      pdfauthor={\@author},
+      colorlinks=true,
+      linkcolor=blue,
+      citecolor=blue,
+      urlcolor=blue
+    }
+  \makeatother
+
+$-- inclui cabeçalhos extras informados para o Pandoc
+$-- em cabeçalho YAML do arquivo a ser convertido
 $for(header-includes)$
 $header-includes$
 $endfor$
 
+% Metadados do arquivo
+\titulo{$title$}
+\autor{$author$}
+\data{$date$}
+\instituicao{$institution$}
+\local{$place$}
+\preambulo{$preamble$}
+\tipotrabalho{$tipotrabalho$}
 
-\titulo{Modelo de relatório técnico escrito direto no latex}
-\autor{Leonardo Goes Shibata\\Mestre em Saúde Pública}
-\data{2020}
-\instituicao{Banco Interamericano de Desenvolvimento}
-\local{Sao Paulo}
-\preambulo{BID-RT-2020-SAUDE-01, sigiloso}
-\tipotrabalho{Relatório Técnico}
+
+
 
 
 \begin{document}
 
-%\imprimircapa
-\imprimirfolhaderosto
+$-- caso cabeçalho YAML do aquivo a ser convertido
+$-- contenha 'capa: true', a capa é impressa
+$if(capa)$
+  \imprimircapa
+$endif$
 
-\tableofcontents
+\imprimirfolhaderosto  % item obrigatório ABNT NBR 10719:2015, seção 4
+
+\tableofcontents  % item obrigatório ABNT NBR 10719:2015, seção 4
 
 \textual
 $body$
