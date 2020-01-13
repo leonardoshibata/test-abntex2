@@ -2,7 +2,7 @@
 output:
   pdf_document:
     template: basic-template.latex
-    #keep_tex: true
+    keep_tex: true
     pandoc_args: ["--top-level-division=chapter", "--filter=c:\\tools\\ruby27\\bin\\pandoc_abnt.bat"]
 
 documentclass: abntex2
@@ -16,6 +16,7 @@ header-includes: |
   \usepackage{abntex2-relatorio-tecnico}
   \usepackage{lipsum}
   \usepackage{hyperref}
+  \usepackage{longtable}
 
 title: Modelo de relatório técnico no formato ABNT escrito no RStudio
 author: |
@@ -33,6 +34,8 @@ capa: true
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
 ```
 
 
@@ -40,9 +43,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 \lipsum[1-4]
 
-![Pirâmide etária](plot-1.png){#id}
 
-Fonte: elaboração própria
 
 
 # Outro capítulo
@@ -52,3 +53,28 @@ Fonte: elaboração própria
 ## Primeira seção
 
 \lipsum[7-17]
+
+
+# Ajustes necessários
+
+## Gráficos
+
+```{r, fig.cap="Título do gráfico"}
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
+```
+
+Fonte: https://ggplot2.tidyverse.org/
+
+
+
+## Tabelas
+
+```{r}
+knitr::kable(head(iris), format = "pandoc")
+```
+
+: Exemplo de tabela \label{exemplo-tabela}
+
+Fonte: documentação kable.  
+Nota: Exemplo de nota.
