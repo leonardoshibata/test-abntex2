@@ -1,6 +1,6 @@
 ---
 output:
-  pdf_document:
+  bookdown::pdf_document2:
     template: basic-template.latex
     keep_tex: true
     #pandoc_args: ["--top-level-division=chapter", "--filter=c:\\tools\\ruby27\\bin\\pandoc_abnt.bat"]  # windows
@@ -47,25 +47,45 @@ library(tidyverse)
 
 
 
-# Outro capítulo
+# Exemplo de seção primária
 
-\lipsum[5-6]
+\lipsum[1]
 
-## Primeira seção
+## Exemplo de seção secundária
 
-\lipsum[7-17]
+\lipsum[2]
+
+### Exemplo de seção terciária
+
+\lipsum[3]
+
+#### Exemplo de seção quaternária
+
+\lipsum[4]
+
+##### Exemplo de seção quinária
+
+A ABNT NBR 6024:2012 determina que a seção quinária seja o último nível de subdivisão das seções.
+
+
+
+
 
 
 # Ajustes necessários
 
 ## Gráficos
 
-```{r, fig.cap="Título do gráfico"}
+```{r figura-exemplo, fig.cap="Título do gráfico"}
 ggplot(mpg, aes(displ, hwy, colour = class)) + 
   geom_point()
 ```
 
 Fonte: https://ggplot2.tidyverse.org/
+
+
+A fígura \@ref(fig:figura-exemplo) é um exemplo de gráfico com título e fonte.
+
 
 
 
@@ -79,3 +99,6 @@ knitr::kable(head(iris), format = "pandoc")
 
 Fonte: documentação kable.  
 Nota: Exemplo de nota.
+
+
+A tabela \@ref(exemplo-tabela) é um exemplo de tabela com título e fonte.
