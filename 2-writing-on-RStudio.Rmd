@@ -3,7 +3,8 @@ output:
   pdf_document:
     template: basic-template.latex
     keep_tex: true
-    pandoc_args: ["--top-level-division=chapter", "--filter=c:\\tools\\ruby27\\bin\\pandoc_abnt.bat"]
+    #pandoc_args: ["--top-level-division=chapter", "--filter=c:\\tools\\ruby27\\bin\\pandoc_abnt.bat"]  # windows
+    pandoc_args: ["--top-level-division=chapter", "--filter=/Users/leonardo/.rbenv/shims/pandoc_abnt"] # mac
 
 documentclass: abntex2
 fontsize: 12pt
