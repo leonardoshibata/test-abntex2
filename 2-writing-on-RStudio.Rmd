@@ -3,8 +3,8 @@ output:
   bookdown::pdf_document2:
     template: basic-template.latex
     keep_tex: true
-    #pandoc_args: ["--top-level-division=chapter", "--filter=c:\\tools\\ruby27\\bin\\pandoc_abnt.bat"]  # windows
-    pandoc_args: ["--top-level-division=chapter", "--filter=/Users/leonardo/.rbenv/shims/pandoc_abnt"] # mac
+    pandoc_args: ["--top-level-division=chapter", "--filter=c:\\tools\\ruby27\\bin\\pandoc_abnt.bat"]  # windows
+    # pandoc_args: ["--top-level-division=chapter", "--filter=/Users/leonardo/.rbenv/shims/pandoc_abnt"] # mac
 
 documentclass: abntex2
 fontsize: 12pt
@@ -84,7 +84,7 @@ ggplot(mpg, aes(displ, hwy, colour = class)) +
 Fonte: https://ggplot2.tidyverse.org/
 
 
-A fígura \@ref(fig:figura-exemplo) é um exemplo de gráfico com título e fonte.
+A \autoref{fig:figura-exemplo} é um exemplo de gráfico com título e fonte.
 
 
 
@@ -101,4 +101,20 @@ Fonte: documentação kable.
 Nota: Exemplo de nota.
 
 
-A tabela \@ref(exemplo-tabela) é um exemplo de tabela com título e fonte.
+A \autoref{exemplo-tabela} é um exemplo de tabela com título e fonte.
+
+
+
+
+
+
+## Referências cruzadas
+
+Nos pacotes bookdown/RMarkdown/knitr, o padrão é criar referências cruzadas com o comando `\@ref(fig:exemplo)`, que é traduzido na macro latex `\ref{fig:exemplo}`.
+
+O problema com esse sistema é que você precisa escrever `Figura \@ref(fig:exemplo)`, ou seja, utilizando o rótulo do tipo de referência cruzada (nesse caso, Figura).
+
+A classe abntex2 preconiza o uso da macro `\autoref{fig:exemplo}` que automaticamente adiciona o rótulo da referência cruzada.
+
+Por exemplo: \autoref{fig:figura-exemplo}, \autoref{exemplo-tabela}.
+

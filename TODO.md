@@ -13,5 +13,5 @@ Posteriormente, criei também um arquivo R Markdown que obtém o mesmo resultado
 
 # TODO
 
-Testar em um relatório real.
+* O R Markdown ou o Pandoc utiliza a macro \ref para as referências cruzadas. A classe abntex2 preconiza o uso do \autoref, que já inclui o tipo de referência (ex.: figura, tabela, etc.). Ver como conseguir incluir como \autoref e não ref.
 
