@@ -45,7 +45,7 @@ $-- e são incluídas no arquivo .tex
 \usepackage{graphicx}
 
 $-- inclui cabeçalhos extras informados para o Pandoc
-$-- em cabeçalho YAML do arquivo a ser convertido
+$-- no cabeçalho YAML do arquivo a ser convertido
 $for(header-includes)$
 $header-includes$
 $endfor$

@@ -1,21 +1,16 @@
 ---
 output:
-  bookdown::pdf_document2:
+  bookdown::pdf_document2:  # esse formato permite a referência cruzada de figuras
     template: basic-template.latex
     keep_tex: true
     pandoc_args: ["--top-level-division=chapter", "--filter=c:\\tools\\ruby27\\bin\\pandoc_abnt.bat"]  # windows
     # pandoc_args: ["--top-level-division=chapter", "--filter=/Users/leonardo/.rbenv/shims/pandoc_abnt"] # mac
 
-documentclass: abntex2
-fontsize: 12pt
-classoption:
-  - openright
-  - twosided
-papersize: a4paper
+#classoption:  # case necessite passar opções adicionais à classe abntex2
 
 header-includes: |
-  \usepackage{abntex2-relatorio-tecnico}
-  \usepackage{lipsum}
+  \usepackage{abntex2-relatorio-tecnico}  % package latex com folha de rosto conforme a ABNT NBR 10719:2015
+  \usepackage{lipsum}  % apenas para fins desse modelo. Gera textos Lipsum.
   \usepackage{hyperref}
   \usepackage{longtable}
 
@@ -42,9 +37,17 @@ library(tidyverse)
 
 # Introdução
 
-\lipsum[1-4]
+Este documento segue o modelo de Relatório Técnico da ABNT NBR 10719:2015 e foi produzido no R Studio. Esta seção explica os passos necessários para a geração do documento em pdf.
 
+Inicialmente, o documento foi escrito em R Notebook, formato que permite integrar texto e código. Através dos pacotes knitr, rmarkdown e bookdown, o documento (texto e resultados) é convertido para um arquivo markdown e repassado ao pandoc. O pandoc então converte o arquivo para o formato latex que é compilado em um pdf.
 
+A classe abntex2 é utilizada para a formatar o arquivo latex de acordo com a NBR 10719. Alguns outros ajustes são necessários para o funcionamento correto dessa conversão:
+
+**Filtro pandoc_abnt.** Os pacotes knitr/rmarkdown/bookdown não dão suporte à macro `\legend` da classe memoir do latex. Por isso, optou-se por utilizar um filtro do pandoc que identifica quando figuras e tabelas são seguidas de uma linha que inicia por `Fonte: ` e converte o texto da linha para uma `\legend`.
+
+**Template pandoc.** O pacote rmarkdown possui um template padrão que é repassado ao pandoc quando da geração de um arquivo latex ou pdf. Foi criado um novo template para acrescentar um *preamble* próprio aos documentos que utilizam a classe abntex2.
+
+**Aquivo sty.** A classe abntex2 define a folha de rosto de acordo com documentos acadêmicos (dissertações, teses). A NBR 10719 possui regras diferentes para relatórios técnicos, por isso, foi criado um pacote que redefine a macro de impressão da folha de rosto.
 
 
 # Exemplo de seção primária
@@ -74,6 +77,14 @@ A ABNT NBR 6024:2012 determina que a seção quinária seja o último nível de 
 
 # Ajustes necessários
 
+Esta seção apresenta alguns ajustes necessários para que a classe abntex2 funcione corretamente com o R Markdown.
+
+
+## Fontes
+
+Para que os gráficos e tabelas exibam uma legenda com a fonte, é necessário que o chunk que gera o gráfico/tabela seja seguido por uma linha em branco e uma outra linha que inicie por `Fonte: `. Veja exemplos nas seções seguintes.
+
+
 ## Gráficos
 
 ```{r figura-exemplo, fig.cap="Título do gráfico"}
@@ -101,7 +112,7 @@ Fonte: documentação kable.
 Nota: Exemplo de nota.
 
 
-A \autoref{exemplo-tabela} é um exemplo de tabela com título e fonte.
+A \autoref{exemplo-tabela} é um exemplo de tabela com título, fonte e nota.
 
 
 
