@@ -1,17 +1,24 @@
-$-- este é um comentário do template Pandoc.
+$-- este é um comentário do template pandoc.
 $-- o seu conteúdo não é incluído no arquivo .tex
 $-- as linhas que começam com % são comentários latex
 $-- e são incluídas no arquivo .tex
 
-% Definições de tamanho de fonte,
-% uso de verso e anverso,
-% conforme a ABNT NBR 10719:2015, seção 5.1
+% Do manual da classe abntex2:
+% As opções mais comuns de inicialização do texto do documento são:
 \documentclass[12pt,openright,twoside,a4paper,brazil]{abntex2}
+% As configurações acima definem o tamanho da fonte
+% e o uso de verso e anverso, 
+% conforme a ABNT NBR 10719:2015, seção 5.1
+
+% Do manual da classe abntex2:
+% Por padrão, não há espaçamento no primeiro parágrafo de cada início de divisão do documento. Porém, você pode definir que o primeiro parágrafo também seja indentado. Para isso, apenas inclua o pacote indentfirst no preâmbulo do documento:
+\usepackage{indentfirst} % Indenta o primeiro parágrafo de cada seção.
 
 \SingleSpacing  % espaçamento segundo a ABNT NBR 10719:2015, seção 5.1
-
 \usepackage{lmodern}  % fonte Latin Modern
-\usepackage{graphicx}
+
+% Do manual da classe abntex2:
+% O seguinte exemplo de preâmbulo torna flexível a compilação do documento, que pode tanto ser realizada da forma tradicional com pdflatex quanto com xelatex, uma vez que inclui seletivamente os pacotes adequados para cada compilador:
 \usepackage{ifxetex}
   \ifxetex
     \usepackage{fontspec}
@@ -21,6 +28,8 @@ $-- e são incluídas no arquivo .tex
     \usepackage[T1]{fontenc}
   \fi
 
+% Do manual da classe abntex2:
+% O hyperref pode inserir informações dos dados do documento nos metadados do PDF final, conforme o exemplo, que também altera informações de cores dos links internos do documento final:
 \usepackage{hyperref} % controla a formação do índice
   \makeatletter
     \hypersetup{
@@ -33,21 +42,22 @@ $-- e são incluídas no arquivo .tex
     }
   \makeatother
 
+\usepackage{graphicx}
+
 $-- inclui cabeçalhos extras informados para o Pandoc
 $-- em cabeçalho YAML do arquivo a ser convertido
 $for(header-includes)$
 $header-includes$
 $endfor$
 
-% Metadados do arquivo
+% Macros de dados do documento (metadados)
+\instituicao{$institution$}
 \titulo{$title$}
 \autor{$author$}
-\data{$date$}
-\instituicao{$institution$}
-\local{$place$}
 \preambulo{$preamble$}
+\local{$place$}
+\data{$date$}
 \tipotrabalho{$tipotrabalho$}
-
 
 
 
